@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Love Timeline 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:60px 20px;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* Floating hearts background */
+.hearts{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    color:rgba(255,75,92,0.6);
+    font-size:20px;
+    animation:float 8s linear infinite, pulse 2s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{ transform:translateY(100vh) scale(0.6); opacity:0; }
+    20%{ opacity:1; }
+    100%{ transform:translateY(-10vh) scale(1.2); opacity:0; }
+}
+
+@keyframes pulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.15); }
+}
+
+/* Title */
+h1{
+    font-family:'Great Vibes',cursive;
+    font-size:3.2rem;
+    margin-bottom:60px;
+    animation:fadeDown 1.5s ease forwards;
+    position:relative;
+    z-index:2;
+}
+
+/* Timeline */
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+    z-index:2;
+}
+
+/* Center line */
+.timeline::before{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:0;
+    width:4px;
+    height:100%;
+    background:#ff4b5c;
+    transform:translateX(-50%);
+}
+
+/* Timeline item */
+.event{
+    position:relative;
+    width:50%;
+    padding:40px 30px;
+    box-sizing:border-box;
+    opacity:0;
+    animation:fadeUp 1s forwards;
+}
+
+/* Left & Right */
+.event.left{ left:0; text-align:right; }
+.event.right{ left:50%; text-align:left; }
+
+/* Rope */
+.event::before{
+    content:'';
+    position:absolute;
+    top:0;
+    width:2px;
+    height:40px;
+    background:#555;
+}
+
+.event.left::before{ right:-2px; }
+.event.right::before{ left:-2px; }
+
+/* Hanging card */
+.card{
+    display:inline-block;
+    background:#fff;
+    padding:10px;
+    border-radius:12px;
+    width:180px;
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
+    transform-origin:top center;
+    animation:swing 3s ease-in-out infinite;
+}
+
+/* Image & video */
+.card img, .card video{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* Date tag */
+.date{
+    background:#ff4b5c;
+    color:#fff;
+    margin-top:8px;
+    padding:6px;
+    border-radius:20px;
+    font-size:.85rem;
+}
+
+/* Text */
+.card p{
+    font-size:.85rem;
+    margin-top:8px;
+    color:#555;
+}
+
+/* Animations */
+@keyframes swing{
+    0%{ transform:rotate(1deg); }
+    50%{ transform:rotate(-1deg); }
+    100%{ transform:rotate(1deg); }
+}
+
+@keyframes fadeUp{
+    from{ opacity:0; transform:translateY(40px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes fadeDown{
+    from{ opacity:0; transform:translateY(-30px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .timeline::before{ left:20px; }
+    .event{
+        width:100%;
+        padding-left:60px;
+        padding-right:20px;
+        text-align:left;
+    }
+    .event.left,.event.right{ left:0; }
+    .event::before{ left:20px; }
+}
+/* Center event (for ending memory) */
+.event.center{
+    width:100%;
+    left:0;
+    text-align:center;
+}
+
+.event.center::before{
+    display:none;
+}
+
+.event.center .card{
+    animation:swing 3s ease-in-out infinite, fadeUp 1s forwards;
+}
+.heart {
+    position:fixed;
+    bottom:0;
+    color:rgba(255,75,92,0.8);
+    pointer-events:none;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.8); opacity:1; }
+    50% { opacity:0.8; }
+    100% { transform: translateY(-110vh) scale(1.2); opacity:0; }
+}
+.heart {
+    position: fixed;
+    bottom: 0;
+    color: rgba(255,75,92,0.8);
+    pointer-events: none;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index: 0; /* ensures hearts float behind the timeline */
+}
+
+</style>
+</head>
+
+<body>
+ <!-- 🎶 optional bg music -->
+<audio id="bgMusic" controls autoplay loop >
+    <source src="./images/song.mp3" type="audio/mpeg">
+</audio>
+<h1>Our Love Memories 💖</h1>
+
+<div class="timeline">
+
+    <div class="event left" style="animation-delay:.2s">
+        <div class="card">
+            <img src="images/first meet.png">
+            <div class="date">March 31 2025 ❤️</div>
+            <p>The day our eyes met for the first time 💕</p>
+        </div>
+    </div>
+
+    <div class="event right" style="animation-delay:.4s">
+        <div class="card">
+            <img src="images/proposal.png">
+            <div class="date">April 9 2025 ❤️</div>
+            <p>One question, endless tomorrows ❤️</p>
+        </div>
+    </div>
+
+    <div class="event left" style="animation-delay:.6s">
+        <div class="card">
+            <img src="images/french.png">
+            <div class="date">April 10 2025❤️</div>
+            <p>Our first dinner out, soft lights, French café vibes, and new beginnings 💞</p>
+        </div>
+    </div>
+
+    <div class="event right" style="animation-delay:.8s">
+        <div class="card">
+            <!-- <img src="images/visit.png"> -->
+            <video src="./images/burger.mp4" controls autoplay loop muted  style="object-fit: auto; object-position:50% 30%;"></video>
+            <div class="date">April 22 2025❤️</div>
+            <p>Unexpected visit 😊✨ unforgettable smile 😘</p>
+        </div>
+    </div>
+
+    <div class="event left" style="animation-delay:1s">
+        <div class="card">
+            <img src="images/pic1.jpg">
+            <div class="date">May 15 2025 ❤️</div>
+            <p>Being around you on that day, I just let myself fall… comfortably 💕</p>
+        </div>
+    </div>
+    <div class="event right" style="animation-delay:3s">
+        <div class="card">
+            <img src="images/sunday.jpg" style="object-fit: auto; object-position:50% 30%;">
+            <div class="date">June 15 2025 ❤️</div>
+            <p>A Sunday surprise visit that made my day  💕</p>
+        </div>
+    </div>
+
+    <div class="event left" style="animation-delay:5s">
+        <div class="card">
+            <img src="images/birth.jpg" style="object-fit: auto; object-position:50% 30%;">
+            <div class="date">June 28 2025 ❤️</div>
+            <p>My birthday made the day truly memorable 🎉💖</p>
+        </div>
+    </div>
+
+    <div class="event right" style="animation-delay:7s">
+        <div class="card">
+            <img src="images/gym.jpg" style="object-fit: auto; object-position:50% 30%;">
+            <div class="date">September 13 2025 ❤️</div>
+            <p>Met you at the gym 💕</p>
+        </div>
+    </div>
+
+    <div class="event left" style="animation-delay:9s">
+        <div class="card">
+            <img src="images/pic3.jpg" style="object-fit: auto; object-position:50% 50%;">
+            <div class="date">September 21 2025 ❤️</div>
+            <p>Wrapped in your arms 💕… feeling at home 😘</p>
+        </div>
+    </div>
+
+     <div class="event right" style="animation-delay:2s">
+        <div class="card">
+            <!-- <img src="images/pic3.jpg" > -->
+             <video src="./images/shopping.mp4" controls autoplay loop muted style="object-fit: auto; object-position:50% 30%;"></video>
+            <div class="date">October 5 2025 ❤️</div>
+            <p>Our first shopping adventure 🛍️… memories in every aisle 💕</p>
+        </div>
+    </div>
+
+    <div class="event left" style="animation-delay:4s">
+        <div class="card">
+            <img src="images/bore.jpeg" style="object-fit: auto; object-position:50% 30%;">
+            <div class="date">November 7 2025 ❤️</div>
+            <p>Just a casual meet ☕… yet a day to remember 💖</p>
+        </div>
+    </div>
+
+    <div class="event right" style="animation-delay:6s">
+        <div class="card">
+            <img src="images/road.jpg" style="object-fit: auto; object-position:50% 40%;">
+            <div class="date">November 24 2025 ❤️</div>
+            <p>Sitting roadside, watching the drizzle together 🌧️💕</p>
+        </div>
+    </div>
+    
+     <div class="event left" style="animation-delay:8s">
+        <div class="card">
+            <!-- <img src="images/pic3.jpg" > -->
+             <video src="./images/chennai.mp4" controls autoplay loop muted style="object-fit: auto; object-position:50% 30%;"></video>
+            <div class="date">December 16 2025 ❤️</div>
+            <p>Chennai outing… a truly memorable day ❤️</p>
+        </div>
+    </div>
+    <div class="event right" style="animation-delay:1s">
+        <div class="card">
+            <img src="images/His Birthday.jpg" style="object-fit: auto; object-position:50% 40%;">
+            <div class="date">January 04 2026 ❤️</div>
+            <p>A day all about him 💙🎉💕</p>
+        </div>
+    </div>
+    <div class="event center" style="animation-delay:3s">
+    <div class="card">
+        <img src="images/Hand.jpg" style="object-fit:auto; object-position:50% 40%;">
+        <div class="date">January 04 2026 ❤️</div>
+        <p>As long as I’m holding your hand, I want to walk through life with you 🤍✨</p>
+    </div>
+</div>
+
+    
+
+</div>
+<script>
+window.onload = () => {
+    let scrollSpeed = 0.4; // smooth romantic speed
+    let scrolling = true;
+
+    function autoScroll() {
+        if (!scrolling) return;
+
+        window.scrollBy(0, scrollSpeed);
+
+        // bottom reach aana stop
+        if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+            scrolling = false;
+            return;
+        }
+
+        requestAnimationFrame(autoScroll);
+    }
+
+    // small delay for images/videos to load properly
+    setTimeout(() => {
+        autoScroll();
+    }, 1500);
+};
+
+/* Floating hearts dynamically */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (10 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+}, 500);
+</script>
+
+</body>
+</html>
